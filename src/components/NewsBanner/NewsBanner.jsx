@@ -1,7 +1,6 @@
 import {formatTimeAgo} from '../../helpers/formatTimeAgo'
 import Image from '../Image/Image'
 import styles from './style.module.css'
-import withSkeleton from '../../helpers/hocs/withSkeleton';
 
 const NewsBanner = ({item}) =>{
 	return(
@@ -11,9 +10,6 @@ const NewsBanner = ({item}) =>{
 			<p className={styles.extra}>{formatTimeAgo(item.published)} by {item.author}</p>
 		</div>
 	)
-}
+} 
 
-
-const NewsBannerWithSkeleton = withSkeleton(NewsBanner, 'banner', 1)
-
-export default NewsBannerWithSkeleton;
+export default NewsBanner;
