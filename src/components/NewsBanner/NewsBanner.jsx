@@ -1,7 +1,7 @@
 import {formatTimeAgo} from '../../helpers/formatTimeAgo'
-import PropTypes from 'prop-types';
 import Image from '../Image/Image'
 import styles from './style.module.css'
+import withSkeleton from '../../helpers/hocs/withSkeleton';
 
 const NewsBanner = ({item}) =>{
 	return(
@@ -13,12 +13,7 @@ const NewsBanner = ({item}) =>{
 	)
 }
 
-NewsBanner.propTypes ={
-	item: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    published: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    image: PropTypes.string, // если изображение не обязательно
-  }).isRequired,
-}
-export default NewsBanner;
+
+const NewsBannerWithSkeleton = withSkeleton(NewsBanner, 'banner', 1)
+
+export default NewsBannerWithSkeleton;
