@@ -19,7 +19,7 @@ export const useFetch = (fetchFunction, params) => {
 			}finally{
 				setIsLoading(false)
 			}
-		})
+		})();
 	}, [fetchFunction,stringParams])
 	return {data, isLoading, error}
 }

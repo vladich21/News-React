@@ -8,8 +8,8 @@ const Categories = ({categories, setSelectedCategory, selectedCategory}) =>{
 	className={!selectedCategory ? styles.active : styles.item} >
 All
 </button>
-			{categories.map(category => {
 
+			{categories.map(category => {
 				return (
 					<button onClick={()=> setSelectedCategory(category)} className={selectedCategory === category ? styles.active : styles.item} key={category}>
 						{category}
