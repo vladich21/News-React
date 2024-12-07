@@ -46,8 +46,9 @@ const handePageClick = (pageNumber) => {
 	return(
 		<main className={styles.main}>
 		{dataCategories ?
-		 <Categories categories={dataCategories.categories} setSelectedCategory={filters.category} selectedCategory={(category)=> changeFilter("category", category)}/> : null
-}
+		 <Categories 
+		 categories={dataCategories.categories} selectedCategory={filters.category} setSelectedCategory={(category)=> changeFilter("category", category)}/> : null}
+
 		<Search keywords={filters.keywords} setKeywords={(keywords)=> changeFilter("keywords", keywords)} />
 
 		<NewsBanner isLoading={isLoading} item={data && data.news && data.news[0]} />
