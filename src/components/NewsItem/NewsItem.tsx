@@ -1,8 +1,14 @@
 import {formatTimeAgo} from '../../helpers/formatTimeAgo'
-import PropTypes from 'prop-types';
 import styles from './style.module.css'
+import React from 'react';
+import { INews } from '../../interfaces';
 
-const NewsItem = ({item}) =>{
+interface Props {
+  item: INews;
+}
+
+
+const NewsItem = ({item}: Props) =>{
 	return(
 		<li className={styles.item}>
 			<div className={styles.wrapper} style={{backgroundImage: `url(${item.image})`}}></div>
@@ -12,14 +18,5 @@ const NewsItem = ({item}) =>{
 			</div>
 		</li>
 	)
-}
-
-NewsItem.propTypes ={
-	item: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    published: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    image: PropTypes.string, // если изображение не обязательно
-  }).isRequired,
 }
 export default NewsItem;
