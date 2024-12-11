@@ -1,12 +1,15 @@
 import React from 'react'
 import styles from './style.module.css'
 import { IPaginationProps } from '../../interfaces'
+import { useTheme } from '../../context/ThemeContext'
 
 
 
 const Pagination = ({totalPages, handleNextPage, handlePreviousPage, handlePageClick, currentPage}: IPaginationProps) =>{
+	const {isDark} = useTheme()
+	
 	return(
-		<div className={styles.pagination}>
+		<div className={`${styles.pagination} ${isDark? styles.dark : styles.light}`}>
 			<button  
 			onClick={handlePreviousPage} 
 			disabled={currentPage <= 1}

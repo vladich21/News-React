@@ -11,6 +11,7 @@ import PaginationWrapper from '../PaginationWrapper/PaginationWrapper';
 import { NewsApiResponse, ParamsType } from '../../interfaces';
 
 
+
 const NewsByFilters = () =>{
 
 	const {filters, changeFilter} = useFilters({
@@ -50,7 +51,8 @@ const handlePageClick = (pageNumber: number) => {
 <PaginationWrapper top bottom	handleNextPage={handleNextPage}  
 		handlePreviousPage={handlePreviousPage} handlePageClick={handlePageClick} 
 		totalPages={TOTAL_PAGES} 
-		currentPage={filters.page_number}>
+		currentPage={filters.page_number}
+		>
 	<NewsList news={data?.news} isLoading={isLoading}/>
 	</PaginationWrapper >
 		</section>
