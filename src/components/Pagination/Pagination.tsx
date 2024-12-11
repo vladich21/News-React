@@ -1,6 +1,10 @@
+import React from 'react'
 import styles from './style.module.css'
+import { IPaginationProps } from '../../interfaces'
 
-const Pagination = ({totalPages, handleNextPage, handlePreviousPage, handePageClick, currentPage}) =>{
+
+
+const Pagination = ({totalPages, handleNextPage, handlePreviousPage, handlePageClick, currentPage}: IPaginationProps) =>{
 	return(
 		<div className={styles.pagination}>
 			<button  
@@ -11,7 +15,7 @@ const Pagination = ({totalPages, handleNextPage, handlePreviousPage, handePageCl
 				<div  className={styles.list}>
 					{[...Array(totalPages)].map((_, index) => {
 						return 	<button 
-						onClick={() =>handePageClick(index + 1)} 
+						onClick={() =>handlePageClick(index + 1)} 
 						className={styles.pageNumber}
 						disabled={index + 1 === currentPage}
 						key={index}>{index + 1}</button>

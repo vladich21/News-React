@@ -1,3 +1,4 @@
+import React from 'react';
 import { PAGE_SIZE, TOTAL_PAGES } from '../../constant/constant';
 import styles from './style.module.css'
 import NewsList from '../NewsList/NewsList'
@@ -7,6 +8,7 @@ import { useDebounce } from '../../helpers/hooks/useDebounce';
 import { useFetch } from '../../helpers/hooks/useFetch';
 import { getNews } from '../../Api/apiNews';
 import PaginationWrapper from '../PaginationWrapper/PaginationWrapper';
+import { NewsApiResponse, ParamsType } from '../../interfaces';
 
 
 const NewsByFilters = () =>{
@@ -20,7 +22,7 @@ const NewsByFilters = () =>{
 	
 	const debouncedKeywords = useDebounce(filters.keywords, 1500)
 	
-	const {data, isLoading} = useFetch(getNews, {
+	const {data, isLoading} = useFetch<NewsApiResponse, ParamsType>(getNews, {
 		...filters,
 		keywords: debouncedKeywords,
 	})
@@ -37,7 +39,7 @@ const handlePreviousPage = () => {
 	}
 }
 
-const handePageClick = (pageNumber) => {
+const handlePageClick = (pageNumber: number) => {
 	changeFilter('page_number', pageNumber);
 }
 
@@ -46,7 +48,7 @@ const handePageClick = (pageNumber) => {
 			<NewsFilters filters={filters} changeFilter={changeFilter}/>
 		
 <PaginationWrapper top bottom	handleNextPage={handleNextPage}  
-		handlePreviousPage={handlePreviousPage} handePageClick={handePageClick} 
+		handlePreviousPage={handlePreviousPage} handlePageClick={handlePageClick} 
 		totalPages={TOTAL_PAGES} 
 		currentPage={filters.page_number}>
 	<NewsList news={data?.news} isLoading={isLoading}/>
